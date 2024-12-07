@@ -1,33 +1,30 @@
 #include <iostream>
 #include <vector>
+using namespace std;
 
-int main() {
-    using namespace std;
-    vector<int> numbers;
-
-    int n;
-    cout << "Введите количество чисел: ";
-    cin >> n;
-
-
-    cout << "Введите " << n << " чисел:" << endl;
-    for (int i = 0; i < n; i++) {
-        int number;
-        cin >> number;
-        numbers.push_back(number);
-    }
-
-
-    int maxNumber = numbers[0];
-
-
-    for (int i = 1; i < numbers.size(); i++) {
-        if (numbers[i] > maxNumber) {
-            maxNumber = numbers[i];
+int findMax(const vector<int>& numbers) {
+    int max = numbers[0]; 
+    for (int num : numbers) {
+        if (num > max) {
+            max = num; 
         }
     }
+    return max;
+}
 
-    cout << "Максимальное число: " << maxNumber << endl;
+int main() {
+    int n;
+    cout << "Введите количество элементов в массиве: ";
+    cin >> n;
+
+    vector<int> numbers(n);
+    cout << "Введите элементы массива:" << endl;
+    for (int i = 0; i < n; ++i) {
+        cin >> numbers[i]; 
+    }
+
+    int maxElement = findMax(numbers);
+    cout << "Максимальный элемент: " << maxElement << endl;
 
     return 0;
 }
