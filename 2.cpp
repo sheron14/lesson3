@@ -1,15 +1,15 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 using namespace std;
-
-int findMax(const vector<int>& numbers) {
-    int max = numbers[0]; 
+int findMinimum(const vector<int>& numbers) {
+    int min = numeric_limits<int>max(); 
     for (int num : numbers) {
-        if (num > max) {
-            max = num; 
+        if (num < min) {
+            min = num; 
         }
     }
-    return max;
+    return min;
 }
 
 int main() {
@@ -18,13 +18,13 @@ int main() {
     cin >> n;
 
     vector<int> numbers(n);
-    cout << "Введите элементы массива:" << endl;
+    cout << "Введите элементы массива:\n";
     for (int i = 0; i < n; ++i) {
         cin >> numbers[i]; 
     }
 
-    int maxElement = findMax(numbers);
-    cout << "Максимальный элемент: " << maxElement << endl;
+    int minimum = findMinimum(numbers);
+    cout << "Минимальное значение в массиве: " << minimum <<endl;
 
     return 0;
 }
